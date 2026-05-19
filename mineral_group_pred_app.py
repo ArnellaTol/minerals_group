@@ -166,8 +166,8 @@ selected_text_transparency = st.multiselect('Прозрачность:', list(tr
 selected_text_fracture = st.multiselect('Излом:', list(fractures.keys()))
 selected_text_cleavage = st.selectbox('Спайность:', list(cleavage.keys()))
 
-mohs_hardness_input = st.text_input('Твердость по шкале Мооса:', placeholder='1.5-2.0', help='Ввод БЕЗ пробелов!!\nДля диапазона использовать знак "-"\nДля десятичной дроби использовать знак точки "." НЕ запятой ","!!')
-density_input = st.text_input('Плотность в г/см³:', placeholder='5.67-5.76', help='Ввод БЕЗ пробелов!!\nДля диапазона использовать знак "-"\nДля десятичной дроби использовать знак точки "." НЕ запятой ","!!')
+mohs_hardness_input = st.text_input('Твердость по шкале Мооса:', placeholder='1.5-2.0', help='Ввод БЕЗ пробелов!!\nДля диапазона использовать знак "-"\nДля одного значения просто число')
+density_input = st.text_input('Плотность в г/см³:', placeholder='5.67-5.76', help='Ввод БЕЗ пробелов!!\nДля диапазона использовать знак "-"\nДля одного значения просто число')
 
 
 
@@ -198,7 +198,7 @@ if prediction_button:
     st.session_state['answer'], st.session_state['probability'] = predict_group(st.session_state['df'])
 
     st.subheader('Ответ:')
-    st.write(groups[int(st.session_state['answer'])])
+    st.write(groups[int(st.session_state['answer'][0])])
 
     st.subheader('Вероятности:')
     for i in range(0,8):
